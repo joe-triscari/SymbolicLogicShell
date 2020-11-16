@@ -42,9 +42,27 @@ namespace LogicExpression
 
         public void WriteHeaderExpression(string expression)
         {
-            var text = $" {expression} |";
-            _textWriter.Write(text);
-            _headerLine.Append(new string('-', text.Length-1));
+            var shortened = RemoveRedundantParenthesis(expression);
+            var highlightIndex = GetMajorOperatorIndex(shortened);
+            var color = Console.ForegroundColor;
+
+            var textChars = $" {shortened} |".ToCharArray();
+            for (int i = 0; i < textChars.Length; i++)
+            {
+                if (i == highlightIndex+1)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    _textWriter.Write(textChars[i]);
+                    Console.ForegroundColor = color;
+                }
+                else
+                {
+                    _textWriter.Write(textChars[i]);
+                }
+            }
+            
+            //  _textWriter.Write(text);
+            _headerLine.Append(new string('-', textChars.Length-1));
             _headerLine.Append('|');
         }
 
@@ -70,7 +88,7 @@ namespace LogicExpression
 
         public void WriteRowExpressionValue(int row, LogicExpression expression, bool value)
         {
-            int width = expression.Expression.Length + 2;
+            int width = RemoveRedundantParenthesis(expression.Expression).Length + 2;
             int mid = width / 2;
             char valueChar = value ? 'T' : 'F';
 
@@ -85,6 +103,57 @@ namespace LogicExpression
         public void WriteRowEnd(int row)
         {
             _textWriter.Write(Environment.NewLine);
+        }
+
+        private string RemoveRedundantParenthesis(string expression)
+        {
+            if (string.IsNullOrWhiteSpace(expression))
+            {
+                return expression;
+            }
+
+            if (expression.Length < 3)
+            {
+                return expression;
+            }
+
+            if (expression[0] == '(' && expression[^1] == ')')
+            {
+                return expression.Substring(1, expression.Length - 2);
+            }
+
+            return expression;
+        }
+
+        private int GetMajorOperatorIndex(string expression)
+        {
+            var chars = expression.ToCharArray();
+            int leftParCount = 0;
+
+            for (int i = 0; i < chars.Length; i++)
+            {
+                char c = chars[i];
+
+                switch (c)
+                {
+                    case '(':
+                        leftParCount += 1;
+                        break;
+                    case ')':
+                        leftParCount -= 1;
+                        break;
+                    default:
+
+                        if (Operators.IsValid(c) && leftParCount == 0)
+                        {
+                            return i;
+                        }
+
+                        break;
+                }
+            }
+
+            return -1;
         }
     }
 }

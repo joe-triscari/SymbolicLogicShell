@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LogicExpression", "LogicExpression.vcxproj", "{35B5F1C4-8C71-4A59-A540-0384035C8137}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35B5F1C4-8C71-4A59-A540-0384035C8137}.Debug|x86.ActiveCfg = Debug|Win32
+		{35B5F1C4-8C71-4A59-A540-0384035C8137}.Debug|x86.Build.0 = Debug|Win32
+		{35B5F1C4-8C71-4A59-A540-0384035C8137}.Release|x86.ActiveCfg = Release|Win32
+		{35B5F1C4-8C71-4A59-A540-0384035C8137}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {550678AB-D954-4E2A-B328-2309B768F369}
+	EndGlobalSection
+EndGlobal
