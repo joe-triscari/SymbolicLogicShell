@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-namespace LogicExpression
+namespace SymbolicLogicLib
 {
     public struct Operand : IComparable<Operand>
     {
@@ -21,7 +21,7 @@ namespace LogicExpression
             return Symbol.CompareTo(other.Symbol);
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsValid(char c)
         {
             return c >= 'a' && c <= 'z';
@@ -37,7 +37,7 @@ namespace LogicExpression
 
         public int Count { get; private set; }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetCombinations()
         {
             if (_combinationCount == null)

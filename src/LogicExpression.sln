@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicExpression", "LogicExpression\LogicExpression.csproj", "{0360FCC1-BEB2-4299-AA51-13B08FBCE79A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SymbolicLogicShell", "LogicExpression\SymbolicLogicShell.csproj", "{0360FCC1-BEB2-4299-AA51-13B08FBCE79A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolicLogicLib", "SymbolicLogicLib\SymbolicLogicLib.csproj", "{F5605F66-AF4E-4E60-9644-1C79D1770602}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0360FCC1-BEB2-4299-AA51-13B08FBCE79A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0360FCC1-BEB2-4299-AA51-13B08FBCE79A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0360FCC1-BEB2-4299-AA51-13B08FBCE79A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5605F66-AF4E-4E60-9644-1C79D1770602}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5605F66-AF4E-4E60-9644-1C79D1770602}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5605F66-AF4E-4E60-9644-1C79D1770602}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5605F66-AF4E-4E60-9644-1C79D1770602}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

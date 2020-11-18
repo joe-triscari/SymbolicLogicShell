@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LogicExpression
+namespace SymbolicLogicLib
 {
     internal static class ExpressionParser
     {

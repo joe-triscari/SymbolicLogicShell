@@ -1,8 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using SymbolicLogicLib;
 
-namespace LogicExpression
+namespace SymbolicLogicShell
 {
     public class AsciiTruthTableWriter : ITruthTableWriter
     {
@@ -49,7 +50,7 @@ namespace LogicExpression
             var textChars = $" {shortened} |".ToCharArray();
             for (int i = 0; i < textChars.Length; i++)
             {
-                if (i == highlightIndex+1)
+                if (i == highlightIndex + 1)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     _textWriter.Write(textChars[i]);
@@ -60,9 +61,9 @@ namespace LogicExpression
                     _textWriter.Write(textChars[i]);
                 }
             }
-            
+
             //  _textWriter.Write(text);
-            _headerLine.Append(new string('-', textChars.Length-1));
+            _headerLine.Append(new string('-', textChars.Length - 1));
             _headerLine.Append('|');
         }
 

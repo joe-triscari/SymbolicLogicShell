@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 
-namespace LogicExpression
+namespace SymbolicLogicLib
 {
     public class LogicExpression
     {
@@ -152,16 +151,14 @@ namespace LogicExpression
             {
                 var b = GetTruthValue(l);
 
-                if (!b)
-                {
-                    alwaysTrue = false;
-                }
-
                 if (b)
                 {
                     alwaysFalse = false;
                 }
-
+                else
+                {
+                    alwaysTrue = false;
+                }
             }
 
             return alwaysTrue ? "Tautology" : alwaysFalse ? "Contradiction" : "Contingency";

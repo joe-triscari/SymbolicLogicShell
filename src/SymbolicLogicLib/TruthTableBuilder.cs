@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LogicExpression
+namespace SymbolicLogicLib
 {
     public class TruthTableBuilder
     {
-        public void BuildTruthTable(LogicExpression expression, ITruthTableWriter writer, bool includeSubExpressions = true)
+        public void WriteTruthTable(LogicExpression expression, ITruthTableWriter writer, bool includeSubExpressions = true)
         {
             if (expression == null)
             {
@@ -19,27 +19,27 @@ namespace LogicExpression
 
             writer.WriteTableStart();
 
-            var expressions = includeSubExpressions ? expression.GetSubExpressions() : new List<string> { expression.Expression };
+            var expressions = (includeSubExpressions ? expression.GetSubExpressions() : new List<string> { expression.Expression }).ConvertAll(LogicExpression.Create);
 
             writer.WriteHeaderStart(expressions.Count);
             writer.WriteHeaderOperands(expression.Operands);
 
             foreach (var subExpression in expressions)
             {
-                writer.WriteHeaderExpression(subExpression);
+                writer.WriteHeaderExpression(subExpression.Expression);
             }
 
             writer.WriteHeaderEnd();
 
             int combos = expression.Operands.GetCombinations();
             int variableCount = expression.Operands.Count;
+            var truthValues = new bool[variableCount];
 
             int row = 1;
             for(int i = combos-1; i >= 0; i--)
             {
                 writer.WriteRowStart(row);
 
-                var truthValues = new bool[variableCount];
                 for (int k = 0; k < variableCount; k++)
                 {
                     truthValues[k] = (combos & (i << k + 1)) != 0;
@@ -52,8 +52,7 @@ namespace LogicExpression
 
                 foreach (var subExpression in expressions)
                 {
-                    var logicExpression = LogicExpression.Create(subExpression);
-                    writer.WriteRowExpressionValue(row, logicExpression, logicExpression.GetTruthValue(operands));
+                    writer.WriteRowExpressionValue(row, subExpression, subExpression.GetTruthValue(operands));
                 }
 
                 writer.WriteRowEnd(row);

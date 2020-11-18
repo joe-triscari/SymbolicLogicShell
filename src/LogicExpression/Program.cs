@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SymbolicLogicLib;
 
-namespace LogicExpression
+namespace SymbolicLogicShell
 {
     class Program
     {
@@ -135,7 +136,7 @@ namespace LogicExpression
 
             var truthTableBuilder = new TruthTableBuilder();
 
-            truthTableBuilder.BuildTruthTable(LogicExpression.Create(argument.ToExpression()), new AsciiTruthTableWriter(Console.Out));
+            truthTableBuilder.WriteTruthTable(LogicExpression.Create(argument.ToExpression()), new AsciiTruthTableWriter(Console.Out));
         }
 
         static void PrintSubExpressions(string[] args)
@@ -177,7 +178,7 @@ namespace LogicExpression
             var expression = LogicExpression.Create(expressionSyntax);
             var truthTableBuilder = new TruthTableBuilder();
 
-            truthTableBuilder.BuildTruthTable(expression, new AsciiTruthTableWriter(Console.Out));
+            truthTableBuilder.WriteTruthTable(expression, new AsciiTruthTableWriter(Console.Out));
         }
     }
 }

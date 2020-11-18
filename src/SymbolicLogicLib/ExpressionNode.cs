@@ -1,4 +1,4 @@
-﻿namespace LogicExpression
+﻿namespace SymbolicLogicLib
 {
     internal abstract class ExpressionNode
     {

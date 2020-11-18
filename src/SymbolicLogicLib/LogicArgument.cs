@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LogicExpression
+namespace SymbolicLogicLib
 {
     public class LogicArgument
     {
@@ -32,16 +32,16 @@ namespace LogicExpression
             if (_conclusion == null)
                 throw new Exception("Cannot convert LogicArgument to String because no conclusion has been set.");
 
-            string sAnt = string.Empty;
+            string antecedent = string.Empty;
             for (int i = 0; i < _premises.Count; ++i)
             {
                 if (i == 0)
-                    sAnt = _premises[i].ToString();
+                    antecedent = _premises[i].ToString();
                 else
-                    sAnt = "(" + sAnt + "&" + _premises[i] + ")";
+                    antecedent = "(" + antecedent + "&" + _premises[i] + ")";
             }
 
-            return "(" + sAnt + ">" + _conclusion + ")";
+            return "(" + antecedent + ">" + _conclusion + ")";
         }
     }
 }
